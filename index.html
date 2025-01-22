@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-Bot</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+    <header>
+        <h2 class="greeting">Hello :)</h2>
+        
+        <h3 class="question">How can I be of help today?</h3>
+        <ul class="suggestions-list">
+        <li class="suggestions">
+            <h4 class="text">How to I make a cup of mocha latte?</h4>
+            <span class="icon material-symbols-rounded">
+                coffee
+                </span>
+        </li>
+        <li class="suggestions">
+            <h4 class="text">What's the weather like today??</h4>
+            <span class="icon material-symbols-rounded">
+                cloud
+                </span>
+        </li>
+        <li class="suggestions">
+            <h4 class="text">Give me some movie recommendation.</h4>
+            <span class="icon material-symbols-rounded">
+                movie
+                </span>
+        </li>
+        <li class="suggestions">
+            <h4 class="text">Help me plan my day.</h4>
+            <span class="icon material-symbols-rounded">
+                psychology
+                </span>
+        </li>
+        <li class="suggestions">
+            <h4 class="text">Help me with a piece of code.</h4>
+            <span class="icon material-symbols-rounded">
+                code
+                </span>
+        </li>
+        </ul>
+    </header>
+
+    <div class="chat-list">
+        
+        <!-- <div class="message incoming loading">
+            <div class="message-content">
+            <img src="images/gemini.svg" alt="Gemini-Image" class="avatar"> 
+             <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque minus neque deserunt rerum aut modi quia accusamus ex atque sint perferendis, recusandae libero. Corporis officia expedita vel voluptatem esse assumenda!</p>
+            <div class="loading-indicator">
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+            </div>
+           </div>
+              <span class="icon material-symbols-rounded">
+                content_copy
+                </span>
+        </div>  -->
+    </div>
+
+    <div class="typing-area">
+        <form action="#" class="typing-form">
+            <div class="input-wrapper">
+                <input type="text" placeholder="Enter your query here" class="typing-input" required>
+                <button class="icon material-symbols-rounded">
+                    send
+                </button>
+                <div class="action-buttons">
+                    <span id="toggle-theme-button" class="icon material-symbols-rounded">
+                        light_mode
+                        </span>
+                        <span class="icon material-symbols-rounded">
+                            delete
+                            </span>
+                </div>
+            </div> 
+        </form>
+        <p class="disclaimer">Hope I could be of some help! :D </p>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>

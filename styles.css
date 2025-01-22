@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root{
+    /* dark mode colors */
+    --text-color:#F5F5DC;
+    --subheading-color:#818181;
+    --placeholder-color:#A5A5A5;
+    --primary-color:#093112;
+    --secondary-color:#301c1c;
+    --secondary-hover-color:#692e2e;
+}
+
+.light_mode{
+    /* light mode color  */
+    --text-color:#222;
+    --subheading-color:#A0A0A0;
+    --placeholder-color:#6C6C6C;
+    --primary-color:#FFF;
+    --secondary-color:#E9EEF6;
+    --secondary-hover-color:#DBE1EA;
+}
+
+body{
+    background: var(--primary-color);
+}
+
+header , .typing-area{
+   color: var(--text-color);
+}
+
+header ,.chat-list .message , .typing-form{
+    max-width: 1600px;
+    margin:0 auto;
+}
+header{
+    margin-top: 7vh;
+    padding:1rem;
+    display: none;
+}
+ header :where(.title , .subtitle){
+    font-weight: 500;
+    line-height: 4.5rem;
+ }
+
+header .greeting{
+    font-size: 3rem;
+    width: fit-content;  /*this is responsible for blue-pnk color saturration */
+    background-clip: text;
+    background: linear-gradient(to right , #4185f3 ,#d96572);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+}
+
+header .question{
+    font-size: 2.7rem;
+    color: var(--subheading-color);
+}
+
+.suggestions-list{
+     margin-top: 5.5vh;
+     list-style: none;
+     display:flex;
+     gap: 2rem;
+     overflow-x: auto;
+     scrollbar-width: none;
+    
+}
+
+.suggestions-list .suggestions{
+    padding: 1.25rem;
+    cursor:pointer;
+    width: 227px;
+    flex-shrink:0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end   ;
+    justify-content: space-between;
+    border-radius: 0.75rem;
+    background: var(--secondary-color);
+}
+
+.suggestions-list .suggestions .icon{
+    height: 42px;
+    width:42px;
+    font-size: 1.3rem;
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+.suggestions-list .suggestions:hover{
+    background: var(--secondary-hover-color);
+}
+.chat-list{
+    padding: 2rem 1rem 12rem;
+    max-height: 100vh;
+    overflow-y: auto;
+
+}
+.chat-list .message .incoming{
+    margin-top: 1.5rem;
+}
+.chat-list .message .message-content{
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    align-items: center;
+}
+.chat-list .message .avatar{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    align-self: flex-start;
+}
+.chat-list .message.loading .avatar{
+    animation: rotate 3s linear infinite;
+}
+@keyframes rotate{
+    100% {
+        transform:rotate(360deg);
+    } 
+}
+.chat-list .message .text{
+    color: var(--text-color);
+}
+
+
+
+.chat-list .message.loading .text{
+    display: none; 
+}
+.chat-list .message .icon{
+    height: 35px;
+    width: 35px;
+    display: flex;
+    cursor: pointer;
+    font-size: 1.25rem ;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    color: var(--text-color);
+    visibility: hidden;
+}
+.chat-list .message:hover .icon{
+    visibility: visible;
+}
+.chat-list .message .icon:hover{
+    background-color: var(--secondary-color);
+}
+.chat-list .loading-indicator{
+    display: none;
+    width: 100%;
+    gap: 0.8rem;
+    flex-direction: column;
+}
+
+.chat-list .message.loading .loading-indicator{
+display: flex;
+}
+.chat-list .loading-indicator .loading-bar{
+    height: 11px;
+    width: 100%;
+    border-radius: 0.14rem;
+    background: linear-gradient(to right , #4285f4 , var(--primary-color) , #4285f4);
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        background-position: -800px, 0px;
+    }
+    100%{
+        background-position: 800px , 0px;
+    }
+}
+
+.typing-area{
+    position: fixed;
+    width:100%;
+    bottom:0;
+    
+}
+.typing-area :where(.typing-form , .action-buttons){
+     display :flex;
+     gap:0.75rem;
+}
+
+.typing-area .input-wrapper{
+    margin-left: 0.5rem;
+    height: 53px;
+    width:100%;
+    display:flex;
+}
+
+.typing-area .typing-input{
+    width:100%;
+    height:100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text-color);
+    border-radius:6.2rem;
+    padding: 1.1rem 4rem 1.1rem 1.5rem;
+    background: var(--secondary-color);
+}
+.typing-area .typing-input:focus{
+    background: rgb(61, 27, 44);
+}
+.typing-area .icon{
+     height: 53px;
+     width: 56px;
+     cursor: pointer;
+     display:flex; 
+     align-items:center;
+     justify-content: center;
+     border-radius: 50% ;
+    background: var(--secondary-color);
+    margin-left: 0.6rem;
+}
+
+.typing-area .action-buttons{
+    display: flex;
+    gap: 0.15rem;
+    align-items: center;
+}
+.typing-area .disclaimer{
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--placeholder-color);
+}
+.disclaimer{
+    margin-bottom: 0.5rem;
+}
