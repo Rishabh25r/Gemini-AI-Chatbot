@@ -1,5 +1,6 @@
  const typingForm = document.querySelector(".typing-form");
  const chatList = document.querySelector(".chat-list");
+ const suggestions = document.querySelectorAll("suggestions-list .suggestions");
  const toggleThemeButton = document.querySelector("#toggle-theme-button");
 //  const deleteChatButton = document.querySelector("#delete-chat-button");
 
@@ -20,6 +21,8 @@ const loadLocalStorageData = () =>{
     
     //Restoring saved chats
     chatList.innerHTML = savedChats || "";
+
+    document.body.classList.toggle(".hide-header" , savedChats);
     chatList.scrollTo(0 , chatList.scrollHeight); // for auto scroll to the bottom
 }
 
@@ -110,7 +113,7 @@ const copyMessage = (copyIcon) => {
 }
 
 const handleOutgoingChat = () => {
-    userMessage = typingForm.querySelector(".typing-input").value.trim(); //takes the exact message and excludes the extra spaces
+    userMessage = typingForm.querySelector(".typing-input").value.trim() || userMessage; //takes the exact message and excludes the extra spaces
     if(!userMessage){
         return ;
     }
@@ -126,9 +129,18 @@ const handleOutgoingChat = () => {
 
     typingForm.reset(); // clear input  field
     chatList.scrollTo(0 , chatList.scrollHeight); // for auto scroll to the bottom
+    document.body.classList.add(".hide-header");//hide the header once the chat gets started
     setTimeout(showLoadingAnimation , 500); // show loading animation after a delay
 };
  
+
+//make a suggestion an outgoing message when clicked upon
+suggestions.forEach(suggestion => {
+    suggestion.addEventListener("click" , ()=>{
+        userMessage = suggestion.querySelector("text").innerText;
+        handleOutgoingChat();
+    });
+});
 
 //Toggle between light and dark themes
 toggleThemeButton.addEventListener("click" , () =>{
