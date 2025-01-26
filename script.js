@@ -2,7 +2,7 @@
  const chatList = document.querySelector(".chat-list");
  const suggestions = document.querySelectorAll("suggestions-list .suggestions");
  const toggleThemeButton = document.querySelector("#toggle-theme-button");
-//  const deleteChatButton = document.querySelector("#delete-chat-button");
+ const deleteChatButton = document.querySelector("#delete-chat-button");
 
 let userMessage = null;
 
@@ -150,12 +150,16 @@ toggleThemeButton.addEventListener("click" , () =>{
 });
 
 //for delete button
-// deleteChatButton.addEventListener("click" , () => {
-//   if(confirm("Are you sure you want to delete all the messages?")){
-//     localStorage.removeItem("savedChats");
-//     loadLocalStorageData();
-//   }
-// });
+deleteChatButton.addEventListener("click" , () => {
+  if(confirm("Are you sure you want to delete all the messages?")){
+    localStorage.removeItem("savedChats");
+   // Clear the chat list UI safely
+   while (chatList.firstChild) {
+    chatList.removeChild(chatList.firstChild);
+  }
+    loadLocalStorageData();
+  }
+});
 
  typingForm.addEventListener("submit" , (e)=>{
   e.preventDefault();
